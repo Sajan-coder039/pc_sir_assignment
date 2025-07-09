@@ -145,11 +145,27 @@ while True:
 # elements at even indexes and those that are prime numbers.
 import random
 
+def prime_checker(n):
+    if n>0:
+        if n>2:
+            for i in range(2,n):
+                if n%i==0:
+                    return False
+            return True 
+        elif n<2:
+            return False
+        else:
+            return True
+    else:
+        print("please, enter the positive number")
+def checker(acc_list:list)->list:
+    
+    even_list=[x for x in acc_list if acc_list.index(x)%2==0 and prime_checker(x)]
+    return even_list
+random.seed(123)
 acc_list=[random.randint(0,20) for _ in range(0,20)]
-even_list=[x for x in acc_list if acc_list.index(x)%2==0 ]
-
 print(acc_list)
-even_list
+print(checker(acc_list))
 
 ###############################################
 
@@ -238,11 +254,14 @@ print("largest number=",max(ran_set))
 
 # 10. Write a Python function that accepts a sentence and returns a set of all unique vowels
 # used.
-vowel=set("aeiou")
-sente=input("enter the sentence: ").lower()
-used_vowel=set([char for char in sente if char in vowel])
-print("set of all vowel : ",used_vowel)
+def vowel_checker(sente:str)->None:
+    vowel=set("aeiou")
+    
+    used_vowel=set([char for char in sente if char in vowel])
+    print("set of all vowel : ",used_vowel)
 
+sente=input("enter the sentence: ").lower()
+vowel_checker(sente)
 ###############################################
 
 # 11. Given a list of numbers with duplicates, use a set to remove the duplicates. Then,
@@ -326,3 +345,6 @@ upper=int(input("enter the upperlimit of price: "))
 for key,value in products.items():
     if value<=upper and value>=lower:
         print(key)
+
+
+
